@@ -1,0 +1,325 @@
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      linear-gradient(#00fff720 1px, transparent 1px),
+      linear-gradient(90deg,#00fff720 1px, transparent 1px);
+    background-size:40px 40px;
+    animation:gridMove 20s linear infinite;
+    z-index:-1;
+}
+
+@keyframes gridMove{
+    from{background-position:0 0;}
+    to{background-position:400px 400px;}
+}
+
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  position: relative;   /* <-- YEH ADD */
+}
+
+
+#app{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    border:2px solid #00fff7;
+    box-shadow:0 0 20px #00fff7;
+}
+
+#header{
+    padding:15px;
+    text-align:center;
+    font-size:22px;
+    border-bottom:1px solid #00fff7;
+}
+
+#chat{
+    flex:1;
+    padding:15px;
+    overflow:auto;
+}
+
+.msg{
+    margin:8px;
+    padding:8px 12px;
+    border-radius:6px;
+}
+
+.user{
+    background:#003333;
+}
+
+.bot{
+    background:#00151a;
+}
+
+#inputBox{
+    display:flex;
+    padding:10px;
+}
+
+#inputBox input{
+    flex:1;
+    background:black;
+    color:#00fff7;
+    border:1px solid #00fff7;
+    padding:8px;
+}
+
+#inputBox button{
+    margin-left:8px;
+    background:#00fff7;
+    border:none;
+    padding:8px 15px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+    box-shadow:0 0 8px #00fff7;
+}
+
+#inputBox button:hover{
+    background:white;
+    box-shadow:0 0 20px #00fff7;
+    transform:scale(1.1);
+}
+
+.speaking{
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    0%{box-shadow:0 0 10px #00fff7;}
+    50%{box-shadow:0 0 30px #00fff7;}
+    100%{box-shadow:0 0 10px #00fff7;}
+}
+/* Voice Wave */
+
+#wave{
+    height:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    margin-bottom:10px;
+    opacity:0;
+}
+
+#wave span{
+    width:6px;
+    height:10px;
+    background:#00fff7;
+    border-radius:3px;
+    animation:wave 1s infinite ease-in-out;
+    box-shadow:0 0 8px #00fff7;
+}
+
+#wave span:nth-child(1){animation-delay:0s;}
+#wave span:nth-child(2){animation-delay:.1s;}
+#wave span:nth-child(3){animation-delay:.2s;}
+#wave span:nth-child(4){animation-delay:.3s;}
+#wave span:nth-child(5){animation-delay:.4s;}
+
+@keyframes wave{
+    0%,100%{height:10px;}
+    50%{height:30px;}
+}
+/* Floating Particles */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle,#00fff7 1px,transparent 1px);
+    background-size:60px 60px;
+    animation:float 40s linear infinite;
+    opacity:0.15;
+    pointer-events:none;
+}
+
+@keyframes float{
+    from{background-position:0 0;}
+    to{background-position:600px 600px;}
+}
+/* Glitch Text */
+
+.glitch{
+    position:relative;
+    color:#00fff7;
+}
+
+.glitch::before,
+.glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    overflow:hidden;
+}
+
+.glitch::before{
+    left:2px;
+    text-shadow:-2px 0 red;
+    animation:glitch1 2s infinite linear alternate-reverse;
+}
+
+.glitch::after{
+    left:-2px;
+    text-shadow:-2px 0 blue;
+    animation:glitch2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch1{
+    0%{clip-path:inset(20% 0 60% 0);}
+    50%{clip-path:inset(40% 0 20% 0);}
+    100%{clip-path:inset(10% 0 80% 0);}
+}
+
+@keyframes glitch2{
+    0%{clip-path:inset(60% 0 20% 0);}
+    50%{clip-path:inset(10% 0 70% 0);}
+    100%{clip-path:inset(40% 0 30% 0);}
+}
+/* Scanlines */
+
+body::after{
+    background:
+      repeating-linear-gradient(
+        transparent,
+        transparent 2px,
+        rgba(0,255,247,0.05) 3px
+      );
+}
+/* Audio Visualizer */
+
+#visualizer{
+    width:100%;
+    height:80px;
+    background:rgba(0,0,0,0.5);
+
+    position:absolute;
+    bottom:0;
+    left:0;
+
+    border-top:2px solid #00fff7;
+    z-index:5;
+}
+/* RADAR CIRCLE */
+
+#radar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid cyan;
+  box-shadow: 0 0 25px cyan;
+  background: radial-gradient(circle, #001818 0%, #000 70%);
+  overflow: hidden;
+}
+
+/* SCAN LINE */
+
+.scan {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0,255,255,0.6),
+    transparent 60%
+  );
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+/* Voice Wave Bar */
+
+#wave-container {
+    position: absolute;
+    bottom: 20px;      /* niche chipak jaayega */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60px;
+    background: rgba(0, 255, 255, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 0 15px cyan;
+    padding: 8px;
+}
+
+#wave {
+    width: 100%;
+    height: 100%;
+}
+body {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+/* ===== LAYER FIX ===== */
+
+#app{
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Radar behind */
+#radar{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+/* Chat on top */
+/* ===== CHAT PANEL FIX ===== */
+
+#chat {
+    position: absolute;
+
+    top: 90px;
+    left: 30px;
+
+    width: 320px;
+    height: 200px;
+
+    padding: 12px;
+
+    overflow-y: auto;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    border: 1px solid #00fff7;
+    border-radius: 12px;
+
+    box-shadow: 0 0 15px #00fff7;
+
+    font-family: monospace;
+    font-size: 13px;
+    color: #00fff7;
+
+    z-index: 9999;
+}
+#chat::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat::-webkit-scrollbar-thumb {
+    background: #00fff7;
+    border-radius: 10px;
+}

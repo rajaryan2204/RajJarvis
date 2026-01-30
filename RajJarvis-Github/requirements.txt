@@ -1,0 +1,4 @@
+pywebview
+SpeechRecognition
+pyttsx3
+pyaudio
